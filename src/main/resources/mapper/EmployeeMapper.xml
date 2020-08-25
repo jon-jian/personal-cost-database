@@ -36,4 +36,8 @@
         )
     </select>
 
+    <select id="getBySQL3" resultType="com.highzap.cloud.personalcostdatabase.entity.Employee">
+         SELECT * FROM `employee`
+    </select>
+
 </mapper>

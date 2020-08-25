@@ -1,5 +1,6 @@
 package com.highzap.cloud.personalcostdatabase.dao;
 
+import com.baomidou.mybatisplus.annotation.SqlParser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.highzap.cloud.personalcostdatabase.entity.Employee;
 import org.apache.ibatis.annotations.Param;
@@ -25,4 +26,7 @@ public interface EmployeeDao extends BaseMapper<Employee> {
     List<Employee> getBySQL();
 
     List<Employee> getBySQL2();
+
+    @SqlParser(filter=true)
+    List<Employee> getBySQL3();
 }

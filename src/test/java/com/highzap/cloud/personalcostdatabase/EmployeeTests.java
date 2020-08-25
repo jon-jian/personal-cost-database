@@ -170,6 +170,17 @@ public class EmployeeTests {
         });
     }
 
+    /**
+     * 使用Mybatis 原生SQL 语句进行多租户测试
+     * 执行完后的SQL :
+     */
+    @Test
+    public void testGetBySQL3() {
+
+        List<Employee> list = employeeDao.getBySQL3();
+
+        System.out.println(list);
+    }
 
 
 }
