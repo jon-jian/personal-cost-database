@@ -1,0 +1,22 @@
+server:
+  port: 9050
+spring:
+  application:
+    name: personal-cost-database
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    deserialization:
+      fail_on_unknown_properties: false
+  datasource:
+    url: jdbc:mysql://192.168.1.2:3306/test?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    username: dev
+    password: Cqhz2020
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.highzap.cloud.personalcostdatabase.entity
+  configuration:
+    # \u63A7\u5236\u53F0\u6253\u5370SQL\u8BED\u53E5
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
