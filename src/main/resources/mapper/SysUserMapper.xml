@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.highzap.cloud.personalcostdatabase.dao.SysUserDao">
+
+    <resultMap type="com.highzap.cloud.personalcostdatabase.entity.SysUser" id="SysUserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userAccount" column="user_account" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="listAllUsersForNestedQuery" resultMap="SysUserMap">
+        select * from sys_user where id in(
+            select id from sys_user
+        )
+    </select>
+
+    <select id="listAllUsersForUnionQuery" resultMap="SysUserMap">
+        select users.* from sys_user as users left join `order` as o
+        on users.user_account = o.user_account
+    </select>
+
+</mapper>
