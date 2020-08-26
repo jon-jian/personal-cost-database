@@ -14,7 +14,7 @@
     </select>
 
     <select id="listAllUsersForUnionQuery" resultMap="SysUserMap">
-        select users.* from sys_user as users left join `order` as o
+        select users.* from sys_user as users left join product as o
         on users.user_account = o.user_account
     </select>
 

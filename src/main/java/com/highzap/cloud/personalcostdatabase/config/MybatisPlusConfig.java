@@ -35,6 +35,7 @@ public class MybatisPlusConfig {
         // 解析规则
         dynamicTableNameParser.setTableNameHandlerMap(new HashMap<String, ITableNameHandler>(2) {{
             put("sys_user", (metaObject, sql, tableName) -> getTableName(tableName));
+            put("product", (metaObject, sql, tableName) -> getTableName(tableName));
         }});
         paginationInterceptor.setSqlParserList(Collections.singletonList(dynamicTableNameParser));
         return paginationInterceptor;
@@ -43,17 +44,7 @@ public class MybatisPlusConfig {
 
     public String getTableName(String tableName) {
         // 模拟表名生成规则
-        Random random = new Random();
-        if (random.nextInt(10) % 3 == 0) {
-            return tableName + "_a";
-        }
-        else if (random.nextInt(10) % 3 == 1) {
-            return tableName + "_b";
-        }
-        else {
-            return tableName + "_c";
-        }
-
+        return tableName + "_a";
     }
 
 
