@@ -9,11 +9,31 @@ spring:
     deserialization:
       fail_on_unknown_properties: false
   datasource:
-    url: jdbc:mysql://192.168.1.2:3306/test?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
-    username: dev
-    password: Cqhz2020
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
+    # 动态数据源配置
+    dynamic:
+      # 默认数据源
+      primary: default
+      datasource:
+        default:
+          url: jdbc:mysql://192.168.1.2:3306/test?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+          username: dev
+          password: Cqhz2020
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+        # 租户数据源1
+        tenant_1:
+          url: jdbc:mysql://192.168.1.7:3306/test?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+          username: dev
+          password: Cqhz2020
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+        # 租户数据源2
+        tenant_2:
+          url: jdbc:mysql://192.168.1.7:3306/test_for_dynamic_datasource?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+          username: dev
+          password: Cqhz2020
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
 mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.highzap.cloud.personalcostdatabase.entity
